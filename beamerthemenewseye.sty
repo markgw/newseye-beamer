@@ -1,0 +1,163 @@
+% Mark Granroth-Wilding, 11.06.2019
+% version 0.1
+
+% Based on NewsEye-PPT Template_text.pptx
+
+%% Sizing
+% Dimensions of that template: 25.4 x 19.05cm
+% Dimensions of this one (standard Beamer size): 12.8 x 9.6cm
+% (Same aspect ratio)
+%
+% To convert from sizes in the PPT template to dimensions here,
+% multiply by 0.503.
+
+\mode<presentation>
+
+\RequirePackage{xcolor}  % \colorlet depends on xcolor
+%\RequirePackage{etoolbox}  % Needed for switching between frame layouts
+\RequirePackage{tikz}
+%\RequirePackage[overload]{textcase}  % Better uppercasing for titles
+
+% Fonts are difficult with pdflatex. We're supposed to use Arial,
+% but that pretty much requires XeLaTeX or similar. As Arial is
+% really just a Helvetica clone and we do have access to Helvetica,
+% we'll just roll with that instead. It looks "close enough" for
+% most purposes.
+\RequirePackage{helvet}
+
+% In case you have Arial installed, you can probably comment out the
+% above line, uncomment the two below lines and compile with XeLaTeX.
+% TODO Add an option to select this
+%\usepackage{fontspec}
+%\setmainfont{Arial}
+
+\renewcommand{\scriptsize}{\fontsize{7}{9}\selectfont}
+
+% Funding
+\newcommand{\funding}[2][]{%
+    \def\fundingIcon{#1}
+    \def\funding{#2}
+}
+
+% Define the official NewsEye colours
+% The official turquoisey blue colour
+\definecolor{ne blue}{RGB}{33,163,178}
+
+
+\ProcessOptionsBeamer
+
+% All fonts should be black
+% TODO Change this
+\setbeamercolor{normal text}{bg=white,fg=black}
+\setbeamercolor{structure}{fg=black}
+
+% Pull in frame title line spacing
+\setbeamerfont{frametitle}{size=\linespread{0.8}\Large}
+
+% Disable navigation
+\setbeamertemplate{navigation symbols}{}
+
+% Circles for first two levels of itemized lists
+% and a dash for the third.
+% TODO Change this
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+\defbeamertemplate{itemize subsubitem}{dash}{-}
+\setbeamertemplate{itemize subsubitem}[dash]
+
+% Slides have a plain white background
+\setbeamertemplate{background canvas}{}
+
+% NewsEye logo, as used in normal slides
+% Declare a PGF image to reduce file size and processing times
+\pgfdeclareimage[width=1.512cm]{news eye}{images/NewsEyeLogos_MP_3-01.png}
+
+% Template for the title page
+\setbeamertemplate{title page}{
+    % TODO Finish updating
+    \vfill%
+    \vspace{0.4cm}%
+    \begin{center}
+        {%
+            \fontsize{27}{30}\selectfont%
+            \inserttitle%
+        }\par%
+        \vspace{0.3cm}
+        {%
+            \fontsize{14}{18}\selectfont%
+            \color{ne blue}%
+            \parbox{8.6cm}{%
+                \centering%
+                \insertsubtitle%
+            }%
+        }%
+    \end{center}
+    \vfill
+}
+
+% Template for the footer, present on all pages
+% TODO Update
+\defbeamertemplate{footline}{normal}{
+  \begin{beamercolorbox}[leftskip=.3cm,rightskip=.3cm]{author in head/foot}%
+    \vspace*{0.1cm}%
+    Official footer to go here
+    \par
+    \vspace*{0.1cm}
+  \end{beamercolorbox}
+}
+
+% Template for an empty footer, can be selected for handouts
+\defbeamertemplate{footline}{plain}{
+  \begin{beamercolorbox}[leftskip=.3cm,rightskip=.3cm]{author in head/foot}%
+  \end{beamercolorbox}
+}
+
+\setbeamertemplate{footline}[normal]
+
+
+% Template for the non-title frames' header
+\setbeamertemplate{frametitle}{%
+    % TODO Update
+    \vskip 0.5cm%
+    \hspace*{45pt}%
+    \begin{beamercolorbox}[dp=0.3cm, wd=\dimexpr\paperwidth - 3.6cm\relax]{frametitle}
+        \textbf{\Large{\insertframetitle}}%
+    \end{beamercolorbox}%
+    \ifx\insertframesubtitle\@empty\else%
+        \par%
+        \hspace*{45pt}%
+        \begin{beamercolorbox}[dp=0.2cm, wd=\dimexpr\paperwidth - 3.6cm\relax]{framesubtitle}
+            \textit{\large\insertframesubtitle}
+        \end{beamercolorbox}%
+    \fi%
+    \par
+}
+
+
+
+% Adjust footnote position
+% TODO Update??
+%\addtobeamertemplate{footnote}{}{\vspace{2ex}}
+
+% Minor adjustments to bibliography
+% Unchanged from UH template and not used yet...
+\setbeamertemplate{bibliography item}{\insertbiblabel} %or theenumiv
+\setbeamerfont{bibliography item}{size=\scriptsize} % or tiny or  footnotesize
+\setbeamerfont{bibliography entry author}{size=\scriptsize}
+\setbeamerfont{bibliography entry title}{size=\scriptsize}
+\setbeamerfont{bibliography entry location}{size=\scriptsize}
+\setbeamerfont{bibliography entry address}{size=\scriptsize}
+\setbeamerfont{bibliography entry note}{size=\scriptsize}
+
+% Set blocks to use the faculty's colour in the title
+% TODO Update
+\setbeamercolor{block title}{use=structure,fg=white,bg=ne blue}
+\setbeamercolor{block title example}{parent=normal,fg=white,bg=ne blue}
+\setbeamercolor{block body}{use=structure,fg=black,bg=white}
+\setbeamercolor{block body example}{parent=normal,fg=black,bg=white}
+
+\setbeamerfont{block title}{size=\footnotesize}
+
+
+\mode
+<all>

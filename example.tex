@@ -1,0 +1,156 @@
+% Remove 't' to vertically align content within slides.
+% Official template has a tiny font size.
+% If you want to follow the official guidelines, use 8pt option.
+% If you want your audience to be able to read your text, use something bigger.
+\documentclass[12pt, t]{beamer}
+
+
+% Default to UTF8 input encoding: plenty of non-ASCII characters
+% in Finnish names etc.
+\usepackage[utf8]{inputenc}
+
+% Defaults language to English.
+\usepackage[english]{babel}
+
+% Used for dummy text only, can be safely removed
+% once \lipsum's are removed from body.
+\usepackage{lipsum}
+
+\usetheme{newseye}
+
+% Title of your presentation
+\title{NewsEye}
+
+% Subtitle of your presentation, optional
+\subtitle{A Digital Investigator for Historical Newspapers}
+
+% Name in curly brackets is used on title page
+\author{Mark Granroth-Wilding}
+
+% Set to department or similar unit
+\institute{Department of Computer Science}
+
+% Date can be anything.
+% Comment out or use \today for today's date.
+\date{11.6.2019}
+
+
+
+\begin{document}
+\maketitle
+
+
+
+\section{Section 1}
+
+\begin{frame}{Boiler Plate}
+	\scriptsize
+	NewsEye, funded by the European Union's Horizon 2020 research and
+	innovation programme, is a research project advancing the state of the
+	art and introducing new concepts, methods and tools for digital
+	humanities by providing enhanced access to historical newspapers for a
+	wide range of users. With the tools and methods created by NewsEye, 
+	crucial user groups will be able to investigate views and perspectives
+	on historical events and development and, as a consequence, the project
+	will \textbf{change the way European digital heritage data is
+	(re)searched, accessed, used and analysed.}
+\end{frame}
+
+
+
+\section{Section 2}
+
+\begin{frame}{Project Outputs}
+	\scriptsize
+	NewsEye will develop a seamlessly integrated armory of tools and
+	methods will be created that will improve users' capability to access,
+	analyse and use the content in the digital Libraries of historical
+	newspapers. NewsEye will thus seek to improve existing tools on
+	(amongst others):
+	\begin{itemize}
+	    \item \textbf{Text Recognition and Article Separation:} 
+		NewsEye will essentially address two major obstacles of current
+		research projects dealing with historical newspapers: One is the
+		fact that in many cases, conventional Optical Character Recognition
+		(OCR) does not provide satisfying results. The other is that text
+		recognition results are mostly on newspaper page level only
+		instead on the appropriate article level.
+		\item \textbf{Multilingual and Uncertainty-aware Semantic Text Enrichment:} 
+		While named entity recognition (NER) and linking (NEL) are very
+		active research areas, their results still are very weak when
+		applied to historical data. The main reason is that most of the
+		models require linguistic analysis, which is not robust to noisy
+		text recognition.
+		\item \textbf{Dynamic Text Analysis:} 
+		Tools for exploring large sets of historical newspapers are scarce,
+		in particular in terms of advanced ability to discover and express
+		historical trends, topics and viewpoints suggested by large-scale
+		analysis. 
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Where can you find us?}
+	% TODO Add links and get styling right
+    \begin{itemize}
+        \item Website
+		\item Twitter
+		\item Blog posts, Podcasts
+		\item Research Publications
+		\item Zenodo and OpenAIRE
+		\item Infographics
+		\item Events
+		\item Project News
+    \end{itemize}
+\end{frame}
+
+
+
+% Subsection and subsubsections are not show on the TOC
+\subsection{Subsection 2.1}
+
+\begin{frame}{An enumerated list}
+    \begin{enumerate}
+        \item Level 1
+        \begin{enumerate}
+            \item Level 2
+            \begin{enumerate}
+                \item Level 3
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{frame}
+
+
+
+\subsubsection{Subsubsection 2.1.1}
+
+\begin{frame}{A slide with lots of content}
+    \lipsum[2]
+\end{frame}
+
+\begin{frame}[fragile]{A slide with a subtitle}
+  \framesubtitle{Concerning the use of subtitles}
+
+  Use the \verb#\framesubtitle# command to add a subtitle
+  underneath your frame's main title.
+
+  \vfill
+
+  Note also that we used \verb#fragile# on this slide: otherwise
+  the \verb#\verb# command doesn't work.
+\end{frame}
+
+% NB: The [c] makes the frame vertically centered even if
+% the default on first line of this file is 't'.
+\begin{frame}[c]{A frame with blocks}
+	% The blocks will be colored accoring to the faculty color scheme
+	\begin{block}{Block with math}
+		$\mathbf{X} = \{1, 2, 3\}$
+	\end{block}
+	\begin{block}{Block with text}
+		Some text
+	\end{block}
+\end{frame}
+
+\end{document}
