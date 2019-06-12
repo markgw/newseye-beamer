@@ -93,7 +93,7 @@
 
 % NewsEye logo, as used in normal slides
 % Declare a PGF image to reduce file size and processing times
-\pgfdeclareimage[width=1.512cm]{news eye}{images/NewsEyeLogos_MP_3-01.png}
+\pgfdeclareimage[width=1.512cm]{news eye}{images/newseye_logo_small.png}
 % EU logo, to appear in footer
 \pgfdeclareimage[width=1.15cm]{eu}{images/eu_flag.png}
 
@@ -101,21 +101,20 @@
 \setbeamertemplate{title page}{
     \vspace*{1.8cm}%
     \vfill%
-    \begin{center}
-        {%
-            \fontsize{28}{30}\selectfont%
-            \inserttitle%
-        }\par%
-        \vspace{0.3cm}
-        {%
-            \fontsize{12}{15}\selectfont%
-            \color{ne blue}%
-            \parbox{8.6cm}{%
-                \centering%
-                \insertsubtitle%
-            }%
+    \centering
+    {%
+        \fontsize{28}{30}\selectfont%
+        \inserttitle%
+    }\par%
+    \vspace{0.3cm}
+    {%
+        \fontsize{12}{15}\selectfont%
+        \color{ne blue}%
+        \parbox{8.6cm}{%
+            \centering%
+            \insertsubtitle%
         }%
-    \end{center}
+    }%
     \vfill
 }
 
@@ -188,8 +187,7 @@
 \setbeamerfont{bibliography entry address}{size=\scriptsize}
 \setbeamerfont{bibliography entry note}{size=\scriptsize}
 
-% Set blocks to use the faculty's colour in the title
-% TODO Update
+% Set blocks to use the NewsEye colour in the title
 \setbeamercolor{block title}{use=structure,fg=white,bg=ne blue}
 \setbeamercolor{block title example}{parent=normal,fg=white,bg=ne blue}
 \setbeamercolor{block body}{use=structure,fg=black,bg=white}
