@@ -14,9 +14,10 @@
 \mode<presentation>
 
 \RequirePackage{xcolor}  % \colorlet depends on xcolor
-%\RequirePackage{etoolbox}  % Needed for switching between frame layouts
 \RequirePackage{tikz}
-%\RequirePackage[overload]{textcase}  % Better uppercasing for titles
+\RequirePackage{ulem}
+\RequirePackage{ragged2e}  % Needed for justifying text
+\RequirePackage{etoolbox}
 
 % Fonts are difficult with pdflatex. We're supposed to use Arial,
 % but that pretty much requires XeLaTeX or similar. As Arial is
@@ -31,13 +32,36 @@
 %\usepackage{fontspec}
 %\setmainfont{Arial}
 
-\renewcommand{\scriptsize}{\fontsize{7}{9}\selectfont}
 
-% Funding
-\newcommand{\funding}[2][]{%
-    \def\fundingIcon{#1}
-    \def\funding{#2}
+% Set the margins to be similar to the PPT template
+\setbeamersize{text margin left=0.8cm, text margin right=0.8cm}
+% Set all body text to be justified, including in lists
+\apptocmd{\frame}{}{\justifying}{} % Allow optional arguments after frame.
+\apptocmd{\item}{\justifying}{}{} % Allow optional arguments after frame.
+
+
+% Apply styling to all links, just like in PPT template
+% This is pretty horrible, but faithfully replicated...
+% Colouring and underlining links is impossible, it seems!
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
 }
+% If you really want to underline your links, you can use the
+% custom \uhref{url}{text} command instead of \href{}{}
+\newcommand{\uhref}[2]{%
+    {\color{blue}\uline{\href{#1}{#2}}}%
+}
+
+
+% Needed to produce the small font size in the template,
+% but probably shouldn't be used in practice
+\newcommand{\verysmall}{\fontsize{7}{9}\selectfont}
+
+
 
 % Define the official NewsEye colours
 % The official turquoisey blue colour
@@ -47,7 +71,6 @@
 \ProcessOptionsBeamer
 
 % All fonts should be black
-% TODO Change this
 \setbeamercolor{normal text}{bg=white,fg=black}
 \setbeamercolor{structure}{fg=black}
 
@@ -57,13 +80,13 @@
 % Disable navigation
 \setbeamertemplate{navigation symbols}{}
 
-% Circles for first two levels of itemized lists
-% and a dash for the third.
-% TODO Change this
-\setbeamertemplate{itemize item}[circle]
-\setbeamertemplate{itemize subitem}[circle]
-\defbeamertemplate{itemize subsubitem}{dash}{-}
-\setbeamertemplate{itemize subsubitem}[dash]
+
+% Styles of different levels of bullets,
+% modelled on the PPT template
+\setbeamertemplate{itemize item}{\scriptsize$\bullet$}
+\defbeamertemplate{itemize subitem}{dash}{--}
+\setbeamertemplate{itemize subitem}[dash]
+\setbeamertemplate{itemize subsubitem}{\scriptsize$\bullet$}
 
 % Slides have a plain white background
 \setbeamertemplate{background canvas}{}
@@ -71,20 +94,21 @@
 % NewsEye logo, as used in normal slides
 % Declare a PGF image to reduce file size and processing times
 \pgfdeclareimage[width=1.512cm]{news eye}{images/NewsEyeLogos_MP_3-01.png}
+% EU logo, to appear in footer
+\pgfdeclareimage[width=1.15cm]{eu}{images/eu_flag.png}
 
 % Template for the title page
 \setbeamertemplate{title page}{
-    % TODO Finish updating
+    \vspace*{1.8cm}%
     \vfill%
-    \vspace{0.4cm}%
     \begin{center}
         {%
-            \fontsize{27}{30}\selectfont%
+            \fontsize{28}{30}\selectfont%
             \inserttitle%
         }\par%
         \vspace{0.3cm}
         {%
-            \fontsize{14}{18}\selectfont%
+            \fontsize{12}{15}\selectfont%
             \color{ne blue}%
             \parbox{8.6cm}{%
                 \centering%
@@ -96,13 +120,25 @@
 }
 
 % Template for the footer, present on all pages
-% TODO Update
 \defbeamertemplate{footline}{normal}{
-  \begin{beamercolorbox}[leftskip=.3cm,rightskip=.3cm]{author in head/foot}%
-    \vspace*{0.1cm}%
-    Official footer to go here
+  \begin{beamercolorbox}[leftskip=0.53cm,rightskip=0.766cm]{author in head/foot}%
+    \raisebox{-0.5\height}{%
+        \pgfuseimage{news eye}%
+    }%
+    \hfill
+    \parbox[c]{4.1cm}{%
+        \bf\centering%
+        \fontsize{4}{5}\selectfont%
+        The NewsEye project has received funding from the European Union's
+        Horizon 2020 research and innovation programme under grant
+        agreement no. 770299.
+    }%
+    \hspace{0.1cm}%
+    \raisebox{-0.5\height}{%
+        \pgfuseimage{eu}%
+    }%
     \par
-    \vspace*{0.1cm}
+    \vspace*{0.08cm}
   \end{beamercolorbox}
 }
 
@@ -117,20 +153,23 @@
 
 % Template for the non-title frames' header
 \setbeamertemplate{frametitle}{%
-    % TODO Update
-    \vskip 0.5cm%
-    \hspace*{45pt}%
-    \begin{beamercolorbox}[dp=0.3cm, wd=\dimexpr\paperwidth - 3.6cm\relax]{frametitle}
-        \textbf{\Large{\insertframetitle}}%
-    \end{beamercolorbox}%
+    \vskip 0.9cm%
+    \begin{beamercolorbox}{frametitle}
+        \centering%
+        \fontsize{22.2}{24}\selectfont%
+        \color{ne blue}%
+        \insertframetitle
+    \end{beamercolorbox}
     \ifx\insertframesubtitle\@empty\else%
-        \par%
-        \hspace*{45pt}%
-        \begin{beamercolorbox}[dp=0.2cm, wd=\dimexpr\paperwidth - 3.6cm\relax]{framesubtitle}
-            \textit{\large\insertframesubtitle}
+        \vskip 0.1cm%
+        \begin{beamercolorbox}{framesubtitle}
+            \centering\it%
+            \fontsize{13}{15}\selectfont%
+            \color{black!70}%
+            \insertframesubtitle
         \end{beamercolorbox}%
     \fi%
-    \par
+    \vskip 0.3cm%
 }
 
 

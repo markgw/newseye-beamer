@@ -1,7 +1,13 @@
+%% Font sizes
+% Official template has slides with a tiny font size and others with
+% quite a big one. To replicate that, we here use 12pt as the document
+% base size (using the 12pt option) and the \verysmall command to
+% produce the smaller (unreadable) text.
+%
+% For a more sane balance, use something smaller as the base size
+% (e.g. 10pt) and don't use the \verysmall command for slide text.
+%
 % Remove 't' to vertically align content within slides.
-% Official template has a tiny font size.
-% If you want to follow the official guidelines, use 8pt option.
-% If you want your audience to be able to read your text, use something bigger.
 \documentclass[12pt, t]{beamer}
 
 
@@ -44,7 +50,7 @@
 \section{Section 1}
 
 \begin{frame}{Boiler Plate}
-	\scriptsize
+	\verysmall
 	NewsEye, funded by the European Union's Horizon 2020 research and
 	innovation programme, is a research project advancing the state of the
 	art and introducing new concepts, methods and tools for digital
@@ -61,7 +67,7 @@
 \section{Section 2}
 
 \begin{frame}{Project Outputs}
-	\scriptsize
+	\verysmall
 	NewsEye will develop a seamlessly integrated armory of tools and
 	methods will be created that will improve users' capability to access,
 	analyse and use the content in the digital Libraries of historical
@@ -91,16 +97,15 @@
 
 
 \begin{frame}{Where can you find us?}
-	% TODO Add links and get styling right
     \begin{itemize}
-        \item Website
-		\item Twitter
-		\item Blog posts, Podcasts
-		\item Research Publications
-		\item Zenodo and OpenAIRE
-		\item Infographics
-		\item Events
-		\item Project News
+        \item \uhref{https://www.newseye.eu/}{Website}
+		\item \uhref{https://twitter.com/NewsEyeEU}{Twitter}
+		\item \uhref{https://www.newseye.eu/blog/}{Blog} posts, \uhref{https://www.newseye.eu/media/}{Podcasts}
+		\item Research \uhref{https://www.newseye.eu/publications/research-publications/}{Publications}
+		\item \uhref{https://zenodo.org/communities/newseye/?page=1&size=20}{Zenodo} and OpenAIRE
+		\item \uhref{https://www.newseye.eu/media/}{Infographics}
+		\item \uhref{https://www.newseye.eu/}{Events}
+		\item Project \uhref{https://www.newseye.eu/}{News}
     \end{itemize}
 \end{frame}
 
@@ -108,6 +113,16 @@
 
 % Subsection and subsubsections are not show on the TOC
 \subsection{Subsection 2.1}
+
+\begin{frame}{Demo slides}
+    The previous slides replicate exactly those included in the official
+	PPT template.
+	\vspace{1cm}
+
+	The following slides demonstrate some more things you can
+	do with this Beamer template.
+\end{frame}
+
 
 \begin{frame}{An enumerated list}
     \begin{enumerate}
@@ -119,6 +134,22 @@
             \end{enumerate}
         \end{enumerate}
     \end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}{A bulleted list}
+    \begin{itemize}
+        \item Level 1
+        \begin{itemize}
+            \item Level 2
+            \begin{itemize}
+                \item Level 3
+            \end{itemize}
+        \end{itemize}
+		\item Level 1
+		\item Level 1
+    \end{itemize}
 \end{frame}
 
 
