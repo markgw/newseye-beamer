@@ -16,7 +16,6 @@
 \RequirePackage{xcolor}  % \colorlet depends on xcolor
 \RequirePackage{tikz}
 \RequirePackage{ulem}
-\RequirePackage{ragged2e}  % Needed for justifying text
 \RequirePackage{etoolbox}
 
 % Fonts are difficult with pdflatex. We're supposed to use Arial,
@@ -35,9 +34,13 @@
 
 % Set the margins to be similar to the PPT template
 \setbeamersize{text margin left=0.8cm, text margin right=0.8cm}
+
 % Set all body text to be justified, including in lists
-\apptocmd{\frame}{}{\justifying}{} % Allow optional arguments after frame.
-\apptocmd{\item}{\justifying}{}{} % Allow optional arguments after frame.
+% Removing this, since it messes up centering. Maybe add it back in
+% future. Alternatively, just use \justifying when necessary
+%\RequirePackage{ragged2e}  % Needed for justifying text
+%\apptocmd{\frame}{}{\justifying}{} % Allow optional arguments after frame.
+%\apptocmd{\item}{\justifying}{}{} % Allow optional arguments after frame.
 
 
 % Apply styling to all links, just like in PPT template
@@ -190,7 +193,7 @@
 % Set blocks to use the NewsEye colour in the title
 \setbeamercolor{block title}{use=structure,fg=white,bg=ne blue}
 \setbeamercolor{block title example}{parent=normal,fg=white,bg=ne blue}
-\setbeamercolor{block body}{use=structure,fg=black,bg=white}
+\setbeamercolor{block body}{use=structure,fg=black,bg=black!10}
 \setbeamercolor{block body example}{parent=normal,fg=black,bg=white}
 
 \setbeamerfont{block title}{size=\footnotesize}
