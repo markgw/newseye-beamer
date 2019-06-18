@@ -118,6 +118,18 @@
             \insertsubtitle%
         }%
     }%
+    \ifx\insertauthor\relax\else{
+        \par\vspace{0.8cm}
+        \fontsize{10}{12}\selectfont%
+        \color{black!60}%
+        \insertauthor
+    }\fi%
+    \ifx\insertinstitute\relax\else{
+        \par\vspace{0.3cm}
+        \fontsize{10}{12}\selectfont%
+        \color{black!60}%
+        \insertinstitute
+    }\fi%
     \vfill
 }
 
