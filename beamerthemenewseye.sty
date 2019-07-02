@@ -100,8 +100,18 @@
 % EU logo, to appear in footer
 \pgfdeclareimage[width=1.15cm]{eu}{images/eu_flag.png}
 
+
+% Always skip headline (frame number) on title page
+\def\ps@navigation@titlepage{%
+    \setbeamertemplate{headline}[plain]%
+    \@nameuse{ps@navigation}%
+}
+
 % Template for the title page
 \setbeamertemplate{title page}{
+    \thispagestyle{navigation@titlepage}%
+    % Skip number on title page
+    \addtocounter{framenumber}{-1}%
     \vspace*{1.8cm}%
     \vfill%
     \centering
@@ -132,6 +142,8 @@
     }\fi%
     \vfill
 }
+
+
 
 % Template for the footer, present on all pages
 \defbeamertemplate{footline}{normal}{
