@@ -178,11 +178,13 @@
 
 
 \defbeamertemplate{headline}{normal}{%
-    \vspace{5pt}%
-    \begin{beamercolorbox}[leftskip=.3cm,rightskip=.3cm]{title in head/foot}%
-        \hfill\insertframenumber%/\inserttotalframenumber
-    \end{beamercolorbox}%
-    \vspace{-1em}\vspace{-5pt}%
+    \tikz[remember picture, overlay]
+        \node (frame num) [anchor=north east, outer sep=0.3cm] at (current page.north east)
+            {{%
+                \usebeamercolor{beamer color}%
+                \color{fg}%
+                \insertframenumber%
+            }};%
 }
 
 \defbeamertemplate{headline}{plain}{}
