@@ -165,6 +165,20 @@
 \setbeamertemplate{footline}[normal]
 
 
+\defbeamertemplate{headline}{normal}{%
+    \vspace{5pt}%
+    \begin{beamercolorbox}[leftskip=.3cm,rightskip=.3cm]{title in head/foot}%
+        \hfill\insertframenumber%/\inserttotalframenumber
+    \end{beamercolorbox}%
+    \vspace{-1em}\vspace{-5pt}%
+}
+
+\defbeamertemplate{headline}{plain}{}
+
+\setbeamertemplate{headline}[normal]
+
+
+
 % Template for the non-title frames' header
 \setbeamertemplate{frametitle}{%
     \vskip 0.9cm%
