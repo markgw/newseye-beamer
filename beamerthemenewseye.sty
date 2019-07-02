@@ -203,10 +203,14 @@
 \setbeamerfont{bibliography entry note}{size=\scriptsize}
 
 % Set blocks to use the NewsEye colour in the title
+% Alerted blocks are currently the same as the others
+% TODO Make a different styling for alerted blocks
 \setbeamercolor{block title}{use=structure,fg=white,bg=ne blue}
 \setbeamercolor{block title example}{parent=normal,fg=white,bg=ne blue}
+\setbeamercolor{block title alerted}{parent=normal,fg=white,bg=ne blue}
 \setbeamercolor{block body}{use=structure,fg=black,bg=black!10}
 \setbeamercolor{block body example}{parent=normal,fg=black,bg=white}
+\setbeamercolor{block body alerted}{parent=normal,fg=black,bg=white}
 
 \setbeamerfont{block title}{size=\footnotesize}
 
